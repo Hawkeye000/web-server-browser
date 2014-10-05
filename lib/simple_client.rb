@@ -3,9 +3,11 @@ require 'socket'
 hostname = 'localhost'
 port = 2000
 
-s = TCPSocket.open(hostname, port)
+socket = TCPSocket.open(hostname, port)
 
-while line = s.gets
+socket.print("Hello World!\r\n")
+
+while line = socket.gets
   puts line.chop
 end
-s.close
+socket.close

@@ -1,8 +1,10 @@
 require 'socket'
 
-host = 'www.tutorialspoint.com'
-port = 80
-path = '/index.htm'
+host = 'localhost'
+port = 2000
+path = '/index.html'
+
+
 
 request = "GET #{path} HTTP/1.0\r\n\r\n"
 
