@@ -1,10 +1,18 @@
 require 'socket'
 
-host = 'localhost'
 port = 2000
-path = '/index.html'
 
-
+if ARGV.empty?
+  host = 'localhost'
+  path = '/index.html'
+else
+  host, root, path = ARGV[0].partition('/')
+  path.prepend(root)
+  if root.empty? && path.empty?
+    path = ARGV[1].dup
+    path.prepend('/') unless path[0] == '/'
+  end
+end
 
 request = "GET #{path} HTTP/1.0\r\n\r\n"
 

@@ -17,8 +17,6 @@ loop {
 
   puts "Received: #{lines.join("\n")}"
 
-  puts identify_resource(lines[0])
-
   if identify_http_method(lines[0]) == "GET"
     file_path = identify_resource(lines[0])
     file_path[0] = "" # remove the leading root indicator
