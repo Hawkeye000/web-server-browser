@@ -30,7 +30,7 @@ def assemble_response(file_path)
   else
     headers << "http/1.0 404 Not Found" unless File.exists?(file_path)
 
-    body = File.read("404_not_found")
+    body = File.read("404_not_found.html")
   end
 
   return headers, body
