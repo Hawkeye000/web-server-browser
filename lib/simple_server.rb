@@ -8,6 +8,12 @@ def identify_http_method(initial_request_line)
   end
 end
 
+def identify_resource(initial_request_line)
+  initial_request_line.split.each do |http_request_part|
+    return http_request_part if /^\/\w+\S*\.\w+$/ =~ http_request_part
+  end
+end
+
 port = 2000
 
 server = TCPServer.open(port)
@@ -22,7 +28,8 @@ loop {
   puts "Received: #{lines.join("<br \>")}"
 
   if identify_http_method(lines[0]) == "GET"
-    response = lines.join("<br \>")
+    file_path = identify_resource(lines[0])
+    response = file_path
     headers = ["http/1.0 200 OK",\
         "date: #{Time.now.ctime}",\
         "server: localhost",\
