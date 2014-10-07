@@ -15,7 +15,7 @@ loop {
 
     puts "Enter a URL:"
     host, root, path = gets.chomp.partition('/')
-    path.prepend(root)
+    path = path.prepend(root)
 
     request = "#{request_method} #{path} HTTP/1.0\r\n\r\n"
 
@@ -25,6 +25,7 @@ loop {
     # split response at first blank line into headers and body
     headers, body = response.split("\r\n\r\n", 2)
     print body
+    socket.close
 
   end 
 }
