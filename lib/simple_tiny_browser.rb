@@ -1,14 +1,16 @@
 require 'socket'
+require_relative 'simple_socket_helper.rb'
 
 port = 2000
 
 host = 'localhost'
 path = '/index.html'
 
-puts "Enter HTTP Method:"
-request_method = gets.chomp
-
 loop {
+
+  puts "Enter HTTP Method:"
+  request_method = gets.chomp
+
   if HTTP_METHODS.any? { |method| method == request_method }
 
     puts "Enter a URL:"

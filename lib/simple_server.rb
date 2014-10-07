@@ -1,6 +1,6 @@
 require 'socket'
 require 'ptools'
-require_relative 'simple_server_helper.rb'
+require_relative 'simple_socket_helper.rb'
 
 port = 2000
 
