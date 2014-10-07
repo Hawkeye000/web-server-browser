@@ -28,7 +28,7 @@ def assemble_response(file_path)
 
     body = File.read(file_path)
   else
-    headers << "http/1.0 404 Not Found" unless File.exists?(file_path)
+    headers << "http/1.0 404 Not Found\r\n\r\n" unless File.exists?(file_path)
 
     body = File.read("404_not_found.html")
   end
