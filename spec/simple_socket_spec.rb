@@ -1,4 +1,4 @@
-require_relative '../lib/simple_server_helper.rb'
+require_relative '../lib/simple_socket_helper.rb'
 
 describe "Simple Server" do 
 
