@@ -9,7 +9,7 @@ path = '/index.html'
 loop {
 
   puts "Enter HTTP Method:"
-  request_method = gets.chomp
+  request_method = gets.chomp.upcase.strip
 
   if HTTP_METHODS.any? { |method| method == request_method }
 
