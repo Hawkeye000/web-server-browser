@@ -2,19 +2,17 @@ require 'socket'
 
 port = 2000
 
-if ARGV.empty?
-  host = 'localhost'
-  path = '/index.html'
-else
-  host, root, path = ARGV[0].partition('/')
-  path.prepend(root)
-  if root.empty? && path.empty?
-    path = ARGV[1].dup
-    path.prepend('/') unless path[0] == '/'
-  end
-end
+host = 'localhost'
+path = '/index.html'
 
-request = "GET #{path} HTTP/1.0\r\n\r\n"
+puts "Enter HTTP Method:"
+request_method = gets.chomp
+
+if HTTP_METHODS.any? { |method| method == request_method }
+
+  request = "#{request_method} #{path} HTTP/1.0\r\n\r\n"
+
+end
 
 socket = TCPSocket.open(host, port)
 socket.print(request)
