@@ -22,6 +22,7 @@ loop {
     file_path[0] = "" # remove the leading root indicator
     headers, body = assemble_response(file_path)
   else
+    headers << "http/1.0 404 Not Found\r\n\r\n" unless File.exists?(file_path)
     body = File.read("404_not_found.html")
   end
 

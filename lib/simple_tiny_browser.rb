@@ -17,6 +17,14 @@ loop {
     host, root, path = gets.chomp.partition('/')
     path = path.prepend(root)
 
+    if request_method == "POST"
+      puts "Enter a viking name:"
+      viking_name = gets.chomp
+      puts "Enter his favorite weapon:"
+      viking_weapon = gets.chomp
+      post_data = { :viking => { :name => viking_name, :weapon => viking_weapon } }
+    end
+
     request = "#{request_method} #{path} HTTP/1.0\r\n\r\n"
 
     socket = TCPSocket.open(host, port)
